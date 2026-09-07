@@ -1,0 +1,185 @@
+package:
+  id: sac-enterprise-platform-conformance
+  version: 1.0.0
+  description: Vendor-neutral metric contract for Databricks, Snowflake, and Microsoft
+    Fabric conformance testing.
+review:
+  status: draft
+  required_roles:
+  - business_owner
+  - data_steward
+  - platform_architect
+  - security_owner
+  approvals: []
+execution:
+  result_type: decimal(18,6)
+  null_policy: propagate
+  empty_set: 'null'
+  divide_by_zero: 'null'
+  tolerance:
+    abs: 1.0e-12
+    rel: 1.0e-09
+  distinct:
+    mode: exact
+    tuple_nulls: include
+  time:
+    calendar: iso8601
+    week_start: monday
+    timezone: UTC
+versioning:
+  policy: semantic
+  breaking_paths:
+  - metrics.*.expression
+  - metrics.*.filter
+  - metrics.*.grain
+  - execution.null_policy
+  - execution.empty_set
+  - execution.divide_by_zero
+  - execution.distinct
+  - execution.time
+  - metrics.*.aggregation
+  - governance.access
+governance:
+  classification: Internal
+  owner: ENTER_BUSINESS_OWNER
+  steward: ENTER_DATA_STEWARD
+  access:
+    discover_roles:
+    - semantic_reader
+    - semantic_admin
+    query_roles:
+    - semantic_reader
+    - semantic_admin
+    administer_roles:
+    - semantic_admin
+  audit_required: true
+observability:
+  required_fields:
+  - run_id
+  - timestamp_utc
+  - semantic_version
+  - contract_hash
+  - adapter_version
+  - platform
+  - native_artifact_hash
+  - query_id
+  - query_hash
+  - result_hash
+  - verdict
+source:
+  table: SaCFact
+  columns:
+    order_id: integer
+    order_date: date
+    customer_id: string_nullable
+    product_id: string
+    region: string
+    warehouse_id: string
+    order_status: string
+    ordered_quantity: integer
+    fulfilled_quantity: integer
+    net_sales_amount: decimal_nullable
+    cost_of_goods_sold: decimal_nullable
+    inventory_value: decimal_nullable
+metrics:
+  revenue:
+    display_name: Revenue
+    description: Sum of net sales for completed orders.
+    grain: Order
+    filter:
+      column: order_status
+      op: eq
+      value: Completed
+    expression:
+      op: sum
+      expr:
+        op: column
+        name: net_sales_amount
+    aggregation:
+      class: additive
+      rollup: sum
+  gross_margin:
+    display_name: Gross Margin
+    description: Sum of row-level net sales less cost of goods sold for completed
+      orders, with NULL propagation inside the row expression.
+    grain: Order
+    filter:
+      column: order_status
+      op: eq
+      value: Completed
+    expression:
+      op: sum
+      expr:
+        op: subtract
+        left:
+          op: column
+          name: net_sales_amount
+        right:
+          op: column
+          name: cost_of_goods_sold
+    aggregation:
+      class: additive
+      rollup: sum
+  fill_rate:
+    display_name: Fill Rate
+    description: Fulfilled quantity divided by ordered quantity for completed orders.
+    grain: Order
+    filter:
+      column: order_status
+      op: eq
+      value: Completed
+    expression:
+      op: divide
+      numerator:
+        op: sum
+        expr:
+          op: column
+          name: fulfilled_quantity
+      denominator:
+        op: sum
+        expr:
+          op: column
+          name: fulfilled_quantity
+    aggregation:
+      class: non_additive
+      rollup: recompute
+  inventory_turnover:
+    display_name: Inventory Turnover
+    description: Cost of goods sold divided by average inventory value for completed
+      orders.
+    grain: Inventory Item
+    filter:
+      column: order_status
+      op: eq
+      value: Completed
+    expression:
+      op: divide
+      numerator:
+        op: sum
+        expr:
+          op: column
+          name: cost_of_goods_sold
+      denominator:
+        op: avg
+        expr:
+          op: column
+          name: inventory_value
+    aggregation:
+      class: non_additive
+      rollup: recompute
+  unique_customers:
+    display_name: Unique Customers
+    description: Exact distinct count of non-NULL customer identifiers for completed
+      orders.
+    grain: Order
+    filter:
+      column: order_status
+      op: eq
+      value: Completed
+    expression:
+      op: count_distinct
+      columns:
+      - customer_id
+    aggregation:
+      class: non_additive
+      rollup: recompute

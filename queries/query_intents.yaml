@@ -1,0 +1,52 @@
+queries:
+  - id: Q01_overall_fill_rate
+    metric: fill_rate
+    dimensions: []
+    filters: []
+
+  - id: Q02_gross_margin
+    metric: gross_margin
+    dimensions: []
+    filters: []
+
+  - id: Q03_fill_rate_by_region
+    metric: fill_rate
+    dimensions: [region]
+    filters: []
+
+  - id: Q04_monthly_fill_rate
+    metric: fill_rate
+    dimensions: [month]
+    filters: []
+
+  - id: Q05_iso_week_order_count
+    probe: iso_week_partition
+    dimensions: [iso_week_year, iso_week]
+    filters:
+      - {column: order_status, op: eq, value: Completed}
+
+  - id: Q06_empty_population_revenue
+    metric: revenue
+    dimensions: []
+    filters:
+      - {column: region, op: eq, value: NoSuchRegion}
+
+  - id: Q07_inventory_turnover
+    metric: inventory_turnover
+    dimensions: []
+    filters: []
+
+  - id: Q08_unique_customers
+    metric: unique_customers
+    dimensions: []
+    filters: []
+
+  - id: Q09_completed_revenue_by_warehouse
+    metric: revenue
+    dimensions: [warehouse_id]
+    filters: []
+
+  - id: Q10_nonadditive_rollup_check
+    probe: fill_rate_rollup
+    dimensions: [day, month]
+    filters: []

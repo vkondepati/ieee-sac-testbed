@@ -1,0 +1,14 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "745ad70c099ea4ea58da32fe716fdd1ef8c7227fe46cb468ac33424874ec46b0",
+  "scenario": "fill_rate_avg_rollup",
+  "versioning": {
+    "breaking_paths": [
+      "metrics.fill_rate.aggregation.rollup"
+    ],
+    "changed_paths": [
+      "metrics.fill_rate.aggregation.rollup"
+    ],
+    "recommended_bump": "major"
+  }
+}

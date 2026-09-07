@@ -1,0 +1,7 @@
+{
+  "revenue": "CALCULATE(SUM('SaCFact'[net_sales_amount]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\"))",
+  "gross_margin": "CALCULATE(SUMX('SaCFact', IF(ISBLANK('SaCFact'[net_sales_amount]) || ISBLANK('SaCFact'[cost_of_goods_sold]), BLANK(), 'SaCFact'[net_sales_amount] - 'SaCFact'[cost_of_goods_sold])), KEEPFILTERS('SaCFact'[order_status] = \"Completed\"))",
+  "fill_rate": "DIVIDE(CALCULATE(SUM('SaCFact'[fulfilled_quantity]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\")), CALCULATE(SUM('SaCFact'[ordered_quantity]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\")), BLANK())",
+  "inventory_turnover": "DIVIDE(CALCULATE(SUM('SaCFact'[cost_of_goods_sold]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\")), CALCULATE(AVERAGE('SaCFact'[inventory_value]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\")), BLANK())",
+  "unique_customers": "CALCULATE(DISTINCTCOUNT('SaCFact'[customer_id]), KEEPFILTERS('SaCFact'[order_status] = \"Completed\"))"
+}

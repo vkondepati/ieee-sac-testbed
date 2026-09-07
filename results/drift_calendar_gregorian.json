@@ -1,0 +1,14 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "19fd64b5388a58b3bc4e2fc84708b08eb5befd2beaca83d0b77698a1e349c4b2",
+  "scenario": "calendar_gregorian",
+  "versioning": {
+    "breaking_paths": [
+      "execution.time.calendar"
+    ],
+    "changed_paths": [
+      "execution.time.calendar"
+    ],
+    "recommended_bump": "major"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "metric_view": "`vk-test`.`sac_conformance`.`sac_metrics`",
+  "rows": 12,
+  "table": "`vk-test`.`sac_conformance`.`sac_fact`"
+}

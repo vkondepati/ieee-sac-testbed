@@ -1,0 +1,14 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "a54d606d3b2c4e8c3f3c5d2c239902a95ef7f772c1734767949029a682770b58",
+  "scenario": "fill_rate_formula_change",
+  "versioning": {
+    "breaking_paths": [
+      "metrics.fill_rate.expression.denominator.expr.name"
+    ],
+    "changed_paths": [
+      "metrics.fill_rate.expression.denominator.expr.name"
+    ],
+    "recommended_bump": "major"
+  }
+}

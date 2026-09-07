@@ -1,0 +1,12 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "9d1bab0a230dfaca8aa9beddec9d24b04f264a7fff3a00c442d8d88727e91a11",
+  "scenario": "source_ordered_quantity_decimal",
+  "versioning": {
+    "breaking_paths": [],
+    "changed_paths": [
+      "source.columns.ordered_quantity"
+    ],
+    "recommended_bump": "minor"
+  }
+}

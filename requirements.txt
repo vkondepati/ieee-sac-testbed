@@ -1,0 +1,5 @@
+PyYAML==6.0.2
+requests==2.32.3
+msal==1.31.1
+snowflake-connector-python==3.16.0
+pytest==8.3.5

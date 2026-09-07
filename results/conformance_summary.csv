@@ -1,0 +1,31 @@
+platform,query_id,verdict,type,detail
+databricks,Q01_overall_fill_rate,CONFORM,none,normalized results equivalent
+databricks,Q02_gross_margin,CONFORM,none,normalized results equivalent
+databricks,Q03_fill_rate_by_region,CONFORM,none,normalized results equivalent
+databricks,Q04_monthly_fill_rate,CONFORM,none,normalized results equivalent
+databricks,Q05_iso_week_order_count,CONFORM,none,normalized results equivalent
+databricks,Q06_empty_population_revenue,CONFORM,none,normalized results equivalent
+databricks,Q07_inventory_turnover,DIVERGENT,value,"row 0 col value: expected='1.7610208816705336426914153132250580046', observed='1.761021'"
+databricks,Q08_unique_customers,CONFORM,none,normalized results equivalent
+databricks,Q09_completed_revenue_by_warehouse,CONFORM,none,normalized results equivalent
+databricks,Q10_nonadditive_rollup_check,OBSERVED,rollup_series,daily series captured; derive monthly recompute vs average in analysis
+snowflake,Q01_overall_fill_rate,CONFORM,none,normalized results equivalent
+snowflake,Q02_gross_margin,CONFORM,none,normalized results equivalent
+snowflake,Q03_fill_rate_by_region,DIVERGENT,value,"row 0 col value: expected='0.84848484848484848484848484848484848485', observed='0.848485'"
+snowflake,Q04_monthly_fill_rate,CONFORM,none,normalized results equivalent
+snowflake,Q05_iso_week_order_count,CONFORM,none,normalized results equivalent
+snowflake,Q06_empty_population_revenue,CONFORM,none,normalized results equivalent
+snowflake,Q07_inventory_turnover,CONFORM,none,normalized results equivalent
+snowflake,Q08_unique_customers,CONFORM,none,normalized results equivalent
+snowflake,Q09_completed_revenue_by_warehouse,CONFORM,none,normalized results equivalent
+snowflake,Q10_nonadditive_rollup_check,OBSERVED,rollup_series,daily series captured; derive monthly recompute vs average in analysis
+fabric,Q01_overall_fill_rate,CONFORM,none,normalized results equivalent
+fabric,Q02_gross_margin,CONFORM,none,normalized results equivalent
+fabric,Q03_fill_rate_by_region,CONFORM,none,normalized results equivalent
+fabric,Q04_monthly_fill_rate,CONFORM,none,normalized results equivalent
+fabric,Q05_iso_week_order_count,CONFORM,none,normalized results equivalent
+fabric,Q06_empty_population_revenue,CONFORM,none,normalized results equivalent
+fabric,Q07_inventory_turnover,CONFORM,none,normalized results equivalent
+fabric,Q08_unique_customers,CONFORM,none,normalized results equivalent
+fabric,Q09_completed_revenue_by_warehouse,CONFORM,none,normalized results equivalent
+fabric,Q10_nonadditive_rollup_check,OBSERVED,rollup_series,daily series captured; derive monthly recompute vs average in analysis

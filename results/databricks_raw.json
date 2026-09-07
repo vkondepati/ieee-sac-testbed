@@ -1,0 +1,762 @@
+{
+  "Q01_overall_fill_rate": {
+    "result": {
+      "columns": [
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 1,
+            "columns": [
+              {
+                "name": "value",
+                "position": 0,
+                "type_name": "DOUBLE",
+                "type_text": "DOUBLE"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "0.64"
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a461-1af7-83b5-74c35a1e5f31",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "0.64"
+        ]
+      ]
+    },
+    "sql": "SELECT MEASURE(fill_rate) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics`"
+  },
+  "Q02_gross_margin": {
+    "result": {
+      "columns": [
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 1,
+            "columns": [
+              {
+                "name": "value",
+                "position": 0,
+                "type_name": "DECIMAL",
+                "type_precision": 29,
+                "type_scale": 2,
+                "type_text": "DECIMAL(29,2)"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "500.00"
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a5e8-1e87-916d-774776594c82",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "500.00"
+        ]
+      ]
+    },
+    "sql": "SELECT MEASURE(gross_margin) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics`"
+  },
+  "Q03_fill_rate_by_region": {
+    "result": {
+      "columns": [
+        "region",
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 3,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 2,
+            "columns": [
+              {
+                "name": "region",
+                "position": 0,
+                "type_name": "STRING",
+                "type_text": "STRING"
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "type_name": "DOUBLE",
+                "type_text": "DOUBLE"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 3,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "East",
+              "0.8484848484848485"
+            ],
+            [
+              "North",
+              "0.7368421052631579"
+            ],
+            [
+              "West",
+              "0.4583333333333333"
+            ]
+          ],
+          "row_count": 3,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a673-141f-bdf4-20479f9970f8",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "East",
+          "0.8484848484848485"
+        ],
+        [
+          "North",
+          "0.7368421052631579"
+        ],
+        [
+          "West",
+          "0.4583333333333333"
+        ]
+      ]
+    },
+    "sql": "SELECT region, MEASURE(fill_rate) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics` GROUP BY region ORDER BY region"
+  },
+  "Q04_monthly_fill_rate": {
+    "result": {
+      "columns": [
+        "month",
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 3,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 2,
+            "columns": [
+              {
+                "name": "month",
+                "position": 0,
+                "type_name": "TIMESTAMP",
+                "type_text": "TIMESTAMP"
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "type_name": "DOUBLE",
+                "type_text": "DOUBLE"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 3,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "2025-12-01T00:00:00.000Z",
+              "0.625"
+            ],
+            [
+              "2026-01-01T00:00:00.000Z",
+              "0.62"
+            ],
+            [
+              "2026-02-01T00:00:00.000Z",
+              "0.8"
+            ]
+          ],
+          "row_count": 3,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a72d-1f72-9a67-a20220d050d6",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "2025-12-01T00:00:00.000Z",
+          "0.625"
+        ],
+        [
+          "2026-01-01T00:00:00.000Z",
+          "0.62"
+        ],
+        [
+          "2026-02-01T00:00:00.000Z",
+          "0.8"
+        ]
+      ]
+    },
+    "sql": "SELECT month, MEASURE(fill_rate) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics` GROUP BY month ORDER BY month"
+  },
+  "Q05_iso_week_order_count": {
+    "result": {
+      "columns": [
+        "iso_week_year",
+        "iso_week",
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 5,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 3,
+            "columns": [
+              {
+                "name": "iso_week_year",
+                "position": 0,
+                "type_name": "INT",
+                "type_text": "INT"
+              },
+              {
+                "name": "iso_week",
+                "position": 1,
+                "type_name": "INT",
+                "type_text": "INT"
+              },
+              {
+                "name": "value",
+                "position": 2,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 5,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "2025",
+              "52",
+              "1"
+            ],
+            [
+              "2026",
+              "1",
+              "4"
+            ],
+            [
+              "2026",
+              "2",
+              "3"
+            ],
+            [
+              "2026",
+              "5",
+              "2"
+            ],
+            [
+              "2026",
+              "6",
+              "1"
+            ]
+          ],
+          "row_count": 5,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a7d3-1848-be2c-24b82cc261f9",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "2025",
+          "52",
+          "1"
+        ],
+        [
+          "2026",
+          "1",
+          "4"
+        ],
+        [
+          "2026",
+          "2",
+          "3"
+        ],
+        [
+          "2026",
+          "5",
+          "2"
+        ],
+        [
+          "2026",
+          "6",
+          "1"
+        ]
+      ]
+    },
+    "sql": "\n                SELECT iso_week_year, iso_week, COUNT(*) AS value\n                FROM `vk-test`.`sac_conformance`.`sac_metrics`\n                WHERE order_status = 'Completed'\n                GROUP BY iso_week_year, iso_week\n                ORDER BY iso_week_year, iso_week\n                "
+  },
+  "Q06_empty_population_revenue": {
+    "result": {
+      "columns": [
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 1,
+            "columns": [
+              {
+                "name": "value",
+                "position": 0,
+                "type_name": "DECIMAL",
+                "type_precision": 28,
+                "type_scale": 2,
+                "type_text": "DECIMAL(28,2)"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              null
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a868-197f-95bc-2d9e9ddac0b6",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          null
+        ]
+      ]
+    },
+    "sql": "SELECT MEASURE(revenue) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics` WHERE region = 'NoSuchRegion'"
+  },
+  "Q07_inventory_turnover": {
+    "result": {
+      "columns": [
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 1,
+            "columns": [
+              {
+                "name": "value",
+                "position": 0,
+                "type_name": "DECIMAL",
+                "type_precision": 38,
+                "type_scale": 6,
+                "type_text": "DECIMAL(38,6)"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "1.761021"
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a907-1b39-88ad-f57f3a634b6d",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "1.761021"
+        ]
+      ]
+    },
+    "sql": "SELECT MEASURE(inventory_turnover) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics`"
+  },
+  "Q08_unique_customers": {
+    "result": {
+      "columns": [
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 1,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 1,
+            "columns": [
+              {
+                "name": "value",
+                "position": 0,
+                "type_name": "LONG",
+                "type_text": "BIGINT"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 1,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "6"
+            ]
+          ],
+          "row_count": 1,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-a9ab-104e-9cc8-8497b69ab6e8",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "6"
+        ]
+      ]
+    },
+    "sql": "SELECT MEASURE(unique_customers) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics`"
+  },
+  "Q09_completed_revenue_by_warehouse": {
+    "result": {
+      "columns": [
+        "warehouse_id",
+        "value"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 3,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 2,
+            "columns": [
+              {
+                "name": "warehouse_id",
+                "position": 0,
+                "type_name": "STRING",
+                "type_text": "STRING"
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "type_name": "DECIMAL",
+                "type_precision": 28,
+                "type_scale": 2,
+                "type_text": "DECIMAL(28,2)"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 3,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "W1",
+              "420.00"
+            ],
+            [
+              "W2",
+              "510.00"
+            ],
+            [
+              "W3",
+              "240.00"
+            ]
+          ],
+          "row_count": 3,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-aa5b-183c-87d0-c758ff9be130",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "W1",
+          "420.00"
+        ],
+        [
+          "W2",
+          "510.00"
+        ],
+        [
+          "W3",
+          "240.00"
+        ]
+      ]
+    },
+    "sql": "SELECT warehouse_id, MEASURE(revenue) AS value FROM `vk-test`.`sac_conformance`.`sac_metrics` GROUP BY warehouse_id ORDER BY warehouse_id"
+  },
+  "Q10_nonadditive_rollup_check": {
+    "result": {
+      "columns": [
+        "order_date",
+        "daily_fill_rate"
+      ],
+      "raw": {
+        "manifest": {
+          "chunks": [
+            {
+              "chunk_index": 0,
+              "row_count": 11,
+              "row_offset": 0
+            }
+          ],
+          "format": "JSON_ARRAY",
+          "schema": {
+            "column_count": 2,
+            "columns": [
+              {
+                "name": "order_date",
+                "position": 0,
+                "type_name": "DATE",
+                "type_text": "DATE"
+              },
+              {
+                "name": "daily_fill_rate",
+                "position": 1,
+                "type_name": "DOUBLE",
+                "type_text": "DOUBLE"
+              }
+            ]
+          },
+          "total_chunk_count": 1,
+          "total_row_count": 11,
+          "truncated": false
+        },
+        "result": {
+          "chunk_index": 0,
+          "data_array": [
+            [
+              "2025-12-28",
+              "1.0"
+            ],
+            [
+              "2025-12-29",
+              "0.5"
+            ],
+            [
+              "2025-12-31",
+              "0.5"
+            ],
+            [
+              "2026-01-01",
+              "0.0"
+            ],
+            [
+              "2026-01-02",
+              "1.0"
+            ],
+            [
+              "2026-01-05",
+              "0.8"
+            ],
+            [
+              "2026-01-06",
+              null
+            ],
+            [
+              "2026-01-07",
+              "1.0"
+            ],
+            [
+              "2026-01-31",
+              "0.5"
+            ],
+            [
+              "2026-02-01",
+              "1.0"
+            ],
+            [
+              "2026-02-02",
+              "0.5"
+            ]
+          ],
+          "row_count": 11,
+          "row_offset": 0
+        },
+        "statement_id": "01f1aad1-aaea-1f73-a431-91463c3a2cf3",
+        "status": {
+          "state": "SUCCEEDED"
+        }
+      },
+      "rows": [
+        [
+          "2025-12-28",
+          "1.0"
+        ],
+        [
+          "2025-12-29",
+          "0.5"
+        ],
+        [
+          "2025-12-31",
+          "0.5"
+        ],
+        [
+          "2026-01-01",
+          "0.0"
+        ],
+        [
+          "2026-01-02",
+          "1.0"
+        ],
+        [
+          "2026-01-05",
+          "0.8"
+        ],
+        [
+          "2026-01-06",
+          null
+        ],
+        [
+          "2026-01-07",
+          "1.0"
+        ],
+        [
+          "2026-01-31",
+          "0.5"
+        ],
+        [
+          "2026-02-01",
+          "1.0"
+        ],
+        [
+          "2026-02-02",
+          "0.5"
+        ]
+      ]
+    },
+    "sql": "\n                SELECT order_date,\n                       MEASURE(fill_rate) AS daily_fill_rate\n                FROM `vk-test`.`sac_conformance`.`sac_metrics`\n                WHERE order_status = 'Completed'\n                GROUP BY order_date\n                ORDER BY order_date\n                "
+  }
+}

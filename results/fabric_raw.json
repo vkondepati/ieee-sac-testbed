@@ -1,0 +1,582 @@
+{
+  "Q01_overall_fill_rate": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    \"value\", [fill_rate]\n)",
+    "result": {
+      "columns": [
+        "[value]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 0.64
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 0.64
+        }
+      ],
+      "rows": [
+        [
+          0.64
+        ]
+      ]
+    }
+  },
+  "Q02_gross_margin": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    \"value\", [gross_margin]\n)",
+    "result": {
+      "columns": [
+        "[value]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 500.0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 500.0
+        }
+      ],
+      "rows": [
+        [
+          500.0
+        ]
+      ]
+    }
+  },
+  "Q03_fill_rate_by_region": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    'SaCFact'[region],\n    \"value\", [fill_rate]\n)",
+    "result": {
+      "columns": [
+        "[value]",
+        "sacfact[region]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 0.4583333333333333,
+                    "sacfact[region]": "West"
+                  },
+                  {
+                    "[value]": 0.7368421052631579,
+                    "sacfact[region]": "North"
+                  },
+                  {
+                    "[value]": 0.8484848484848485,
+                    "sacfact[region]": "East"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 0.4583333333333333,
+          "sacfact[region]": "West"
+        },
+        {
+          "[value]": 0.7368421052631579,
+          "sacfact[region]": "North"
+        },
+        {
+          "[value]": 0.8484848484848485,
+          "sacfact[region]": "East"
+        }
+      ],
+      "rows": [
+        [
+          0.4583333333333333,
+          "West"
+        ],
+        [
+          0.7368421052631579,
+          "North"
+        ],
+        [
+          0.8484848484848485,
+          "East"
+        ]
+      ]
+    }
+  },
+  "Q04_monthly_fill_rate": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    'SaCFact'[month],\n    \"value\", [fill_rate]\n)",
+    "result": {
+      "columns": [
+        "[value]",
+        "sacfact[month]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 0.62,
+                    "sacfact[month]": "2026-01-01T00:00:00"
+                  },
+                  {
+                    "[value]": 0.8,
+                    "sacfact[month]": "2026-02-01T00:00:00"
+                  },
+                  {
+                    "[value]": 0.625,
+                    "sacfact[month]": "2025-12-01T00:00:00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 0.62,
+          "sacfact[month]": "2026-01-01T00:00:00"
+        },
+        {
+          "[value]": 0.8,
+          "sacfact[month]": "2026-02-01T00:00:00"
+        },
+        {
+          "[value]": 0.625,
+          "sacfact[month]": "2025-12-01T00:00:00"
+        }
+      ],
+      "rows": [
+        [
+          0.62,
+          "2026-01-01T00:00:00"
+        ],
+        [
+          0.8,
+          "2026-02-01T00:00:00"
+        ],
+        [
+          0.625,
+          "2025-12-01T00:00:00"
+        ]
+      ]
+    }
+  },
+  "Q05_iso_week_order_count": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    'SaCFact'[iso_week_year],\n    'SaCFact'[iso_week],\n    TREATAS({\"Completed\"}, 'SaCFact'[order_status]),\n    \"value\", COUNTROWS('SaCFact')\n)\nORDER BY 'SaCFact'[iso_week_year], 'SaCFact'[iso_week]\n",
+    "result": {
+      "columns": [
+        "[value]",
+        "sacfact[iso_week]",
+        "sacfact[iso_week_year]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 1,
+                    "sacfact[iso_week]": 52,
+                    "sacfact[iso_week_year]": 2025
+                  },
+                  {
+                    "[value]": 4,
+                    "sacfact[iso_week]": 1,
+                    "sacfact[iso_week_year]": 2026
+                  },
+                  {
+                    "[value]": 3,
+                    "sacfact[iso_week]": 2,
+                    "sacfact[iso_week_year]": 2026
+                  },
+                  {
+                    "[value]": 2,
+                    "sacfact[iso_week]": 5,
+                    "sacfact[iso_week_year]": 2026
+                  },
+                  {
+                    "[value]": 1,
+                    "sacfact[iso_week]": 6,
+                    "sacfact[iso_week_year]": 2026
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 1,
+          "sacfact[iso_week]": 52,
+          "sacfact[iso_week_year]": 2025
+        },
+        {
+          "[value]": 4,
+          "sacfact[iso_week]": 1,
+          "sacfact[iso_week_year]": 2026
+        },
+        {
+          "[value]": 3,
+          "sacfact[iso_week]": 2,
+          "sacfact[iso_week_year]": 2026
+        },
+        {
+          "[value]": 2,
+          "sacfact[iso_week]": 5,
+          "sacfact[iso_week_year]": 2026
+        },
+        {
+          "[value]": 1,
+          "sacfact[iso_week]": 6,
+          "sacfact[iso_week_year]": 2026
+        }
+      ],
+      "rows": [
+        [
+          1,
+          52,
+          2025
+        ],
+        [
+          4,
+          1,
+          2026
+        ],
+        [
+          3,
+          2,
+          2026
+        ],
+        [
+          2,
+          5,
+          2026
+        ],
+        [
+          1,
+          6,
+          2026
+        ]
+      ]
+    }
+  },
+  "Q06_empty_population_revenue": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    TREATAS({\"NoSuchRegion\"}, 'SaCFact'[region]),\n    \"value\", [revenue]\n)",
+    "result": {
+      "columns": [],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": []
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [],
+      "rows": []
+    }
+  },
+  "Q07_inventory_turnover": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    \"value\", [inventory_turnover]\n)",
+    "result": {
+      "columns": [
+        "[value]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 1.7610208816705337
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 1.7610208816705337
+        }
+      ],
+      "rows": [
+        [
+          1.7610208816705337
+        ]
+      ]
+    }
+  },
+  "Q08_unique_customers": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    \"value\", [unique_customers]\n)",
+    "result": {
+      "columns": [
+        "[value]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 6
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 6
+        }
+      ],
+      "rows": [
+        [
+          6
+        ]
+      ]
+    }
+  },
+  "Q09_completed_revenue_by_warehouse": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    'SaCFact'[warehouse_id],\n    \"value\", [revenue]\n)",
+    "result": {
+      "columns": [
+        "[value]",
+        "sacfact[warehouse_id]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[value]": 240.0,
+                    "sacfact[warehouse_id]": "W3"
+                  },
+                  {
+                    "[value]": 510.0,
+                    "sacfact[warehouse_id]": "W2"
+                  },
+                  {
+                    "[value]": 420.0,
+                    "sacfact[warehouse_id]": "W1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[value]": 240.0,
+          "sacfact[warehouse_id]": "W3"
+        },
+        {
+          "[value]": 510.0,
+          "sacfact[warehouse_id]": "W2"
+        },
+        {
+          "[value]": 420.0,
+          "sacfact[warehouse_id]": "W1"
+        }
+      ],
+      "rows": [
+        [
+          240.0,
+          "W3"
+        ],
+        [
+          510.0,
+          "W2"
+        ],
+        [
+          420.0,
+          "W1"
+        ]
+      ]
+    }
+  },
+  "Q10_nonadditive_rollup_check": {
+    "dax": "EVALUATE\nSUMMARIZECOLUMNS(\n    'SaCFact'[order_date],\n    TREATAS({\"Completed\"}, 'SaCFact'[order_status]),\n    \"daily_fill_rate\", [fill_rate]\n)\nORDER BY 'SaCFact'[order_date]\n",
+    "result": {
+      "columns": [
+        "[daily_fill_rate]",
+        "sacfact[order_date]"
+      ],
+      "raw": {
+        "results": [
+          {
+            "tables": [
+              {
+                "rows": [
+                  {
+                    "[daily_fill_rate]": 1.0,
+                    "sacfact[order_date]": "2025-12-28T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.5,
+                    "sacfact[order_date]": "2025-12-29T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.5,
+                    "sacfact[order_date]": "2025-12-31T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.0,
+                    "sacfact[order_date]": "2026-01-01T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 1.0,
+                    "sacfact[order_date]": "2026-01-02T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.8,
+                    "sacfact[order_date]": "2026-01-05T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 1.0,
+                    "sacfact[order_date]": "2026-01-07T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.5,
+                    "sacfact[order_date]": "2026-01-31T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 1.0,
+                    "sacfact[order_date]": "2026-02-01T00:00:00"
+                  },
+                  {
+                    "[daily_fill_rate]": 0.5,
+                    "sacfact[order_date]": "2026-02-02T00:00:00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "row_objects": [
+        {
+          "[daily_fill_rate]": 1.0,
+          "sacfact[order_date]": "2025-12-28T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.5,
+          "sacfact[order_date]": "2025-12-29T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.5,
+          "sacfact[order_date]": "2025-12-31T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.0,
+          "sacfact[order_date]": "2026-01-01T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 1.0,
+          "sacfact[order_date]": "2026-01-02T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.8,
+          "sacfact[order_date]": "2026-01-05T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 1.0,
+          "sacfact[order_date]": "2026-01-07T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.5,
+          "sacfact[order_date]": "2026-01-31T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 1.0,
+          "sacfact[order_date]": "2026-02-01T00:00:00"
+        },
+        {
+          "[daily_fill_rate]": 0.5,
+          "sacfact[order_date]": "2026-02-02T00:00:00"
+        }
+      ],
+      "rows": [
+        [
+          1.0,
+          "2025-12-28T00:00:00"
+        ],
+        [
+          0.5,
+          "2025-12-29T00:00:00"
+        ],
+        [
+          0.5,
+          "2025-12-31T00:00:00"
+        ],
+        [
+          0.0,
+          "2026-01-01T00:00:00"
+        ],
+        [
+          1.0,
+          "2026-01-02T00:00:00"
+        ],
+        [
+          0.8,
+          "2026-01-05T00:00:00"
+        ],
+        [
+          1.0,
+          "2026-01-07T00:00:00"
+        ],
+        [
+          0.5,
+          "2026-01-31T00:00:00"
+        ],
+        [
+          1.0,
+          "2026-02-01T00:00:00"
+        ],
+        [
+          0.5,
+          "2026-02-02T00:00:00"
+        ]
+      ]
+    }
+  }
+}

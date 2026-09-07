@@ -1,0 +1,185 @@
+table sacfact
+	lineageTag: b43f05ef-9d50-49bf-9d1f-39bfd91b224f
+	sourceLineageTag: [dbo].[sacfact]
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5c84b3a3-bddb-4a87-a09b-01a2ae9a2786
+		sourceLineageTag: order_id
+		summarizeBy: sum
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 2b8a3804-ac4c-4f96-b0e1-6e89148df8e7
+		sourceLineageTag: order_date
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 03e76756-c3c9-46c9-9821-ee20762186a5
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e07c180c-00a5-4b35-af9c-4c7598fea0f7
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f967fc73-fc0e-454c-be1d-a0bc9501b57c
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column warehouse_id
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e1744127-a03a-464a-8b32-1cf81c3d30b4
+		sourceLineageTag: warehouse_id
+		summarizeBy: none
+		sourceColumn: warehouse_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_status
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b4e30a22-223d-43d2-9008-2f69779527ff
+		sourceLineageTag: order_status
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordered_quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9370f3eb-0d27-4778-8b2c-bf7a804af841
+		sourceLineageTag: ordered_quantity
+		summarizeBy: sum
+		sourceColumn: ordered_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column fulfilled_quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 773f8db8-4f24-4b5c-b427-2117442a7bd0
+		sourceLineageTag: fulfilled_quantity
+		summarizeBy: sum
+		sourceColumn: fulfilled_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_sales_amount
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 84ec132e-02c7-4bb3-91a2-9eba6c0586a3
+		sourceLineageTag: net_sales_amount
+		summarizeBy: sum
+		sourceColumn: net_sales_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_of_goods_sold
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 9e19aa4c-f3f8-4fc8-b64a-494735bfe927
+		sourceLineageTag: cost_of_goods_sold
+		summarizeBy: sum
+		sourceColumn: cost_of_goods_sold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inventory_value
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: f7bf8a82-570e-4415-8ff7-5cafb00dbc1f
+		sourceLineageTag: inventory_value
+		summarizeBy: sum
+		sourceColumn: inventory_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column month
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 9c440b9b-f743-4aca-b1a9-bf513be5df01
+		sourceLineageTag: month
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a552b63b-9fcd-4a13-8773-ff68913265bb
+		sourceLineageTag: iso_week
+		summarizeBy: sum
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week_year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3445d22d-1a2b-42be-894e-adfac8a39108
+		sourceLineageTag: iso_week_year
+		summarizeBy: sum
+		sourceColumn: iso_week_year
+
+		annotation SummarizationSetBy = Automatic
+
+	measure revenue = CALCULATE(SUM('SaCFact'[net_sales_amount]), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000
+	measure gross_margin = CALCULATE(SUMX('SaCFact', IF(ISBLANK('SaCFact'[net_sales_amount]) || ISBLANK('SaCFact'[cost_of_goods_sold]), BLANK(), 'SaCFact'[net_sales_amount] - 'SaCFact'[cost_of_goods_sold])), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000
+	measure fill_rate = DIVIDE(CALCULATE(SUM('SaCFact'[fulfilled_quantity]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), CALCULATE(SUM('SaCFact'[ordered_quantity]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), BLANK())
+		formatString: 0.000000
+	measure inventory_turnover = DIVIDE(CALCULATE(SUM('SaCFact'[cost_of_goods_sold]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), CALCULATE(AVERAGE('SaCFact'[inventory_value]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), BLANK())
+		formatString: 0.000000
+	measure unique_customers = CALCULATE(CALCULATE(DISTINCTCOUNT('SaCFact'[customer_id]), KEEPFILTERS('SaCFact'[customer_id] <> BLANK())), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000
+	partition sacfact = entity
+		mode: directLake
+		source
+			entityName: sacfact
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table

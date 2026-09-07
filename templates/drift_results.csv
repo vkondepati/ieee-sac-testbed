@@ -1,0 +1,7 @@
+scenario,drift_type,platform,detected_stage,blocked_before_deploy,runtime_divergence_detected,time_to_detect_ms,notes
+empty_set_zero,semantic,,,,,,
+calendar_gregorian,semantic,,,,,,
+fill_rate_avg_rollup,semantic,,,,,,
+fill_rate_formula_change,business_or_definition,,,,,,
+revoke_reader,governance,,,,,,
+source_ordered_quantity_decimal,source_schema,,,,,,

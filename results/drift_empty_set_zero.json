@@ -1,0 +1,14 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "2cc1e690dc91a25fe2b3a981112e54ff56b52cd8325a3fdba3c1d60356c67aee",
+  "scenario": "empty_set_zero",
+  "versioning": {
+    "breaking_paths": [
+      "execution.empty_set"
+    ],
+    "changed_paths": [
+      "execution.empty_set"
+    ],
+    "recommended_bump": "major"
+  }
+}

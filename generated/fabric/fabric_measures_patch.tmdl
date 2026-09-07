@@ -1,0 +1,19 @@
+createOrReplace
+
+ref table SaCFact
+	calculatedColumn month = DATE(YEAR('SaCFact'[order_date]), MONTH('SaCFact'[order_date]), 1)
+		dataType: dateTime
+	calculatedColumn iso_week = WEEKNUM('SaCFact'[order_date], 21)
+		dataType: int64
+	calculatedColumn iso_week_year = YEAR('SaCFact'[order_date] - WEEKDAY('SaCFact'[order_date], 2) + 4)
+		dataType: int64
+	measure revenue = CALCULATE(SUM('SaCFact'[net_sales_amount]), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000
+	measure gross_margin = CALCULATE(SUMX('SaCFact', IF(ISBLANK('SaCFact'[net_sales_amount]) || ISBLANK('SaCFact'[cost_of_goods_sold]), BLANK(), 'SaCFact'[net_sales_amount] - 'SaCFact'[cost_of_goods_sold])), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000
+	measure fill_rate = DIVIDE(CALCULATE(SUM('SaCFact'[fulfilled_quantity]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), CALCULATE(SUM('SaCFact'[ordered_quantity]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), BLANK())
+		formatString: 0.000000
+	measure inventory_turnover = DIVIDE(CALCULATE(SUM('SaCFact'[cost_of_goods_sold]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), CALCULATE(AVERAGE('SaCFact'[inventory_value]), KEEPFILTERS('SaCFact'[order_status] = "Completed")), BLANK())
+		formatString: 0.000000
+	measure unique_customers = CALCULATE(DISTINCTCOUNT('SaCFact'[customer_id]), KEEPFILTERS('SaCFact'[order_status] = "Completed"))
+		formatString: 0.000000

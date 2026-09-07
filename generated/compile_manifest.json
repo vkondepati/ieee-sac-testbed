@@ -1,0 +1,57 @@
+{
+  "databricks": {
+    "capabilities": {
+      "composite_distinct_include_nulls": "unsupported_by_base_compiler",
+      "iso_week_calendar": "equivalent_lowering",
+      "metric_aggregation": "native",
+      "non_additive_rollup": "contract_guard",
+      "runtime_query_api": "native",
+      "single_column_distinct": "native",
+      "vendor_native_semantic_model": "native"
+    },
+    "files": {
+      "sql": "/mnt/data/SemanticsAsCode_Authenticated_Runtime_Test_Kit/generated/databricks/databricks_deploy.sql",
+      "yaml": "/mnt/data/SemanticsAsCode_Authenticated_Runtime_Test_Kit/generated/databricks/databricks_metric_view.yaml"
+    },
+    "hashes": {
+      "sql": "7be621afae04096fef77bdb494753438c957f79e93839872355e8f5a8a51deba",
+      "yaml": "1c55eb87451ae12598ae4ca257e3940ad9a3da5542df533b58e81271037864b5"
+    }
+  },
+  "fabric": {
+    "capabilities": {
+      "composite_distinct_include_nulls": "equivalent_lowering_possible",
+      "iso_week_calendar": "equivalent_lowering_via_calculated_columns",
+      "metric_aggregation": "native_dax",
+      "non_additive_rollup": "equivalent_lowering_via_measure",
+      "runtime_query_api": "native_dax_api",
+      "single_column_distinct": "native",
+      "vendor_native_semantic_model": "native"
+    },
+    "files": {
+      "measure_map": "/mnt/data/SemanticsAsCode_Authenticated_Runtime_Test_Kit/generated/fabric/fabric_measure_map.json",
+      "tmdl": "/mnt/data/SemanticsAsCode_Authenticated_Runtime_Test_Kit/generated/fabric/fabric_measures_patch.tmdl"
+    },
+    "hashes": {
+      "measure_map": "ccc4a8d586d1c5a24592f3af3f503fb4ced5f5881e33546ffec0ce306fb64044",
+      "tmdl": "a33fb389e134564cb9249b52f3d442c0f88318235c03d03aaaf49f017951854a"
+    }
+  },
+  "snowflake": {
+    "capabilities": {
+      "composite_distinct_include_nulls": "unsupported_by_base_compiler",
+      "iso_week_calendar": "native",
+      "metric_aggregation": "native",
+      "non_additive_rollup": "native_or_contract_guard",
+      "runtime_query_api": "native",
+      "single_column_distinct": "native",
+      "vendor_native_semantic_model": "native"
+    },
+    "files": {
+      "sql": "/mnt/data/SemanticsAsCode_Authenticated_Runtime_Test_Kit/generated/snowflake/snowflake_semantic_view.sql"
+    },
+    "hashes": {
+      "sql": "cd9737d812dab1fc7fc2b90cddd7bc0f1dd486636d0ec9a09e02c064e5ccef30"
+    }
+  }
+}

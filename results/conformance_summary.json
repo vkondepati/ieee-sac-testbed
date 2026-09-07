@@ -1,0 +1,158 @@
+{
+  "databricks": {
+    "Q01_overall_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q02_gross_margin": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q03_fill_rate_by_region": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q04_monthly_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q05_iso_week_order_count": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q06_empty_population_revenue": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q07_inventory_turnover": {
+      "detail": "row 0 col value: expected='1.7610208816705336426914153132250580046', observed='1.761021'",
+      "type": "value",
+      "verdict": "DIVERGENT"
+    },
+    "Q08_unique_customers": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q09_completed_revenue_by_warehouse": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q10_nonadditive_rollup_check": {
+      "detail": "daily series captured; derive monthly recompute vs average in analysis",
+      "type": "rollup_series",
+      "verdict": "OBSERVED"
+    }
+  },
+  "fabric": {
+    "Q01_overall_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q02_gross_margin": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q03_fill_rate_by_region": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q04_monthly_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q05_iso_week_order_count": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q06_empty_population_revenue": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q07_inventory_turnover": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q08_unique_customers": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q09_completed_revenue_by_warehouse": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q10_nonadditive_rollup_check": {
+      "detail": "daily series captured; derive monthly recompute vs average in analysis",
+      "type": "rollup_series",
+      "verdict": "OBSERVED"
+    }
+  },
+  "snowflake": {
+    "Q01_overall_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q02_gross_margin": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q03_fill_rate_by_region": {
+      "detail": "row 0 col value: expected='0.84848484848484848484848484848484848485', observed='0.848485'",
+      "type": "value",
+      "verdict": "DIVERGENT"
+    },
+    "Q04_monthly_fill_rate": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q05_iso_week_order_count": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q06_empty_population_revenue": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q07_inventory_turnover": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q08_unique_customers": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q09_completed_revenue_by_warehouse": {
+      "detail": "normalized results equivalent",
+      "type": "none",
+      "verdict": "CONFORM"
+    },
+    "Q10_nonadditive_rollup_check": {
+      "detail": "daily series captured; derive monthly recompute vs average in analysis",
+      "type": "rollup_series",
+      "verdict": "OBSERVED"
+    }
+  }
+}

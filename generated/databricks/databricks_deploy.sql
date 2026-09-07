@@ -1,0 +1,44 @@
+CREATE OR REPLACE VIEW main.sac_conformance.sac_metrics WITH METRICS LANGUAGE YAML AS
+$$
+version: '1.1'
+comment: Generated from vendor-neutral Semantics-as-Code conformance contract
+source: main.sac_conformance.sac_fact
+fields:
+- name: order_date
+  expr: order_date
+- name: region
+  expr: region
+- name: warehouse_id
+  expr: warehouse_id
+- name: product_id
+  expr: product_id
+- name: order_status
+  expr: order_status
+- name: month
+  expr: DATE_TRUNC('MONTH', order_date)
+- name: iso_week_year
+  expr: EXTRACT(YEAROFWEEK FROM order_date)
+- name: iso_week
+  expr: EXTRACT(WEEK FROM order_date)
+measures:
+- name: revenue
+  expr: SUM(CASE WHEN order_status = 'Completed' THEN net_sales_amount END)
+  comment: Sum of net sales for completed orders.
+- name: gross_margin
+  expr: SUM(CASE WHEN order_status = 'Completed' THEN (net_sales_amount - cost_of_goods_sold)
+    END)
+  comment: Sum of row-level net sales less cost of goods sold for completed orders,
+    with NULL propagation inside the row expression.
+- name: fill_rate
+  expr: (SUM(CASE WHEN order_status = 'Completed' THEN fulfilled_quantity END)) /
+    NULLIF((SUM(CASE WHEN order_status = 'Completed' THEN ordered_quantity END)),
+    0)
+  comment: Fulfilled quantity divided by ordered quantity for completed orders.
+- name: inventory_turnover
+  expr: (SUM(CASE WHEN order_status = 'Completed' THEN cost_of_goods_sold END)) /
+    NULLIF((AVG(CASE WHEN order_status = 'Completed' THEN inventory_value END)), 0)
+  comment: Cost of goods sold divided by average inventory value for completed orders.
+- name: unique_customers
+  expr: COUNT(DISTINCT CASE WHEN order_status = 'Completed' THEN customer_id END)
+  comment: Exact distinct count of non-NULL customer identifiers for completed orders.
+$$;

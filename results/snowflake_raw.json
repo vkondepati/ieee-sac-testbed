@@ -1,0 +1,228 @@
+{
+  "Q01_overall_fill_rate": {
+    "result": {
+      "columns": [
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "0.640000"
+        ]
+      ]
+    },
+    "sql": "SELECT AGG(fill_rate) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS"
+  },
+  "Q02_gross_margin": {
+    "result": {
+      "columns": [
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "500.00"
+        ]
+      ]
+    },
+    "sql": "SELECT AGG(gross_margin) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS"
+  },
+  "Q03_fill_rate_by_region": {
+    "result": {
+      "columns": [
+        "REGION",
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "East",
+          "0.848485"
+        ],
+        [
+          "North",
+          "0.736842"
+        ],
+        [
+          "West",
+          "0.458333"
+        ]
+      ]
+    },
+    "sql": "SELECT region, AGG(fill_rate) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS GROUP BY region ORDER BY region"
+  },
+  "Q04_monthly_fill_rate": {
+    "result": {
+      "columns": [
+        "MONTH",
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "2025-12-01",
+          "0.625000"
+        ],
+        [
+          "2026-01-01",
+          "0.620000"
+        ],
+        [
+          "2026-02-01",
+          "0.800000"
+        ]
+      ]
+    },
+    "sql": "SELECT month, AGG(fill_rate) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS GROUP BY month ORDER BY month"
+  },
+  "Q05_iso_week_order_count": {
+    "result": {
+      "columns": [
+        "ISO_WEEK_YEAR",
+        "ISO_WEEK",
+        "VALUE"
+      ],
+      "rows": [
+        [
+          2025,
+          52,
+          1
+        ],
+        [
+          2026,
+          1,
+          4
+        ],
+        [
+          2026,
+          2,
+          3
+        ],
+        [
+          2026,
+          5,
+          2
+        ],
+        [
+          2026,
+          6,
+          1
+        ]
+      ]
+    },
+    "sql": "SELECT iso_week_year, iso_week, AGG(order_count) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS WHERE order_status='Completed' GROUP BY iso_week_year, iso_week ORDER BY iso_week_year, iso_week"
+  },
+  "Q06_empty_population_revenue": {
+    "result": {
+      "columns": [
+        "VALUE"
+      ],
+      "rows": [
+        [
+          null
+        ]
+      ]
+    },
+    "sql": "SELECT AGG(revenue) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS WHERE region = 'NoSuchRegion'"
+  },
+  "Q07_inventory_turnover": {
+    "result": {
+      "columns": [
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "1.76102088"
+        ]
+      ]
+    },
+    "sql": "SELECT AGG(inventory_turnover) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS"
+  },
+  "Q08_unique_customers": {
+    "result": {
+      "columns": [
+        "VALUE"
+      ],
+      "rows": [
+        [
+          6
+        ]
+      ]
+    },
+    "sql": "SELECT AGG(unique_customers) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS"
+  },
+  "Q09_completed_revenue_by_warehouse": {
+    "result": {
+      "columns": [
+        "WAREHOUSE_ID",
+        "VALUE"
+      ],
+      "rows": [
+        [
+          "W1",
+          "420.00"
+        ],
+        [
+          "W2",
+          "510.00"
+        ],
+        [
+          "W3",
+          "240.00"
+        ]
+      ]
+    },
+    "sql": "SELECT warehouse_id, AGG(revenue) AS value FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS GROUP BY warehouse_id ORDER BY warehouse_id"
+  },
+  "Q10_nonadditive_rollup_check": {
+    "result": {
+      "columns": [
+        "ORDER_DATE",
+        "DAILY_FILL_RATE"
+      ],
+      "rows": [
+        [
+          "2025-12-28",
+          "1.000000"
+        ],
+        [
+          "2025-12-29",
+          "0.500000"
+        ],
+        [
+          "2025-12-31",
+          "0.500000"
+        ],
+        [
+          "2026-01-01",
+          "0.000000"
+        ],
+        [
+          "2026-01-02",
+          "1.000000"
+        ],
+        [
+          "2026-01-05",
+          "0.800000"
+        ],
+        [
+          "2026-01-06",
+          null
+        ],
+        [
+          "2026-01-07",
+          "1.000000"
+        ],
+        [
+          "2026-01-31",
+          "0.500000"
+        ],
+        [
+          "2026-02-01",
+          "1.000000"
+        ],
+        [
+          "2026-02-02",
+          "0.500000"
+        ]
+      ]
+    },
+    "sql": "SELECT order_date, AGG(fill_rate) AS daily_fill_rate FROM SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS WHERE order_status='Completed' GROUP BY order_date ORDER BY order_date"
+  }
+}

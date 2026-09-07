@@ -1,0 +1,14 @@
+{
+  "base_hash": "173d5d900382132a218cbc2d47b355cfefa49a2fa79efb25e7ef7d52cbd7ce3b",
+  "mutated_hash": "044f501e6d10c3f5d305772b93cd239c118392f685d388308a2e64363c60eaab",
+  "scenario": "revoke_reader",
+  "versioning": {
+    "breaking_paths": [
+      "governance.access.query_roles"
+    ],
+    "changed_paths": [
+      "governance.access.query_roles"
+    ],
+    "recommended_bump": "major"
+  }
+}

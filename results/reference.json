@@ -1,0 +1,121 @@
+{
+  "Q01_overall_fill_rate": [
+    {
+      "value": "0.64"
+    }
+  ],
+  "Q02_gross_margin": [
+    {
+      "value": "500.00"
+    }
+  ],
+  "Q03_fill_rate_by_region": [
+    {
+      "region": "East",
+      "value": "0.84848484848484848484848484848484848485"
+    },
+    {
+      "region": "North",
+      "value": "0.73684210526315789473684210526315789474"
+    },
+    {
+      "region": "West",
+      "value": "0.45833333333333333333333333333333333333"
+    }
+  ],
+  "Q04_monthly_fill_rate": [
+    {
+      "month": "2025-12-01",
+      "value": "0.625"
+    },
+    {
+      "month": "2026-01-01",
+      "value": "0.62"
+    },
+    {
+      "month": "2026-02-01",
+      "value": "0.8"
+    }
+  ],
+  "Q05_iso_week_order_count": [
+    {
+      "iso_week": "52",
+      "iso_week_year": "2025",
+      "value": "1"
+    },
+    {
+      "iso_week": "1",
+      "iso_week_year": "2026",
+      "value": "4"
+    },
+    {
+      "iso_week": "2",
+      "iso_week_year": "2026",
+      "value": "3"
+    },
+    {
+      "iso_week": "5",
+      "iso_week_year": "2026",
+      "value": "2"
+    },
+    {
+      "iso_week": "6",
+      "iso_week_year": "2026",
+      "value": "1"
+    }
+  ],
+  "Q06_empty_population_revenue": [
+    {
+      "value": null
+    }
+  ],
+  "Q07_inventory_turnover": [
+    {
+      "value": "1.7610208816705336426914153132250580046"
+    }
+  ],
+  "Q08_unique_customers": [
+    {
+      "value": "6"
+    }
+  ],
+  "Q09_completed_revenue_by_warehouse": [
+    {
+      "value": "420.00",
+      "warehouse_id": "W1"
+    },
+    {
+      "value": "510.00",
+      "warehouse_id": "W2"
+    },
+    {
+      "value": "240.00",
+      "warehouse_id": "W3"
+    }
+  ],
+  "Q10_nonadditive_rollup_check": {
+    "daily": {
+      "2025-12-28": "1",
+      "2025-12-29": "0.5",
+      "2025-12-31": "0.5",
+      "2026-01-01": "0",
+      "2026-01-02": "1",
+      "2026-01-05": "0.8",
+      "2026-01-06": null,
+      "2026-01-07": "1",
+      "2026-01-31": "0.5",
+      "2026-02-01": "1",
+      "2026-02-02": "0.5"
+    },
+    "monthly_average_daily": {
+      "2025-12": "0.66666666666666666666666666666666666667",
+      "2026-01": "0.66",
+      "2026-02": "0.75"
+    },
+    "monthly_recompute": {
+      "2025-12": "0.625",
+      "2026-01": "0.62",
+      "2026-02": "0.8"
+    }
+  }
+}

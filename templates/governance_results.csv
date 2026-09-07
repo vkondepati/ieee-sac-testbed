@@ -1,0 +1,4 @@
+principal_or_role,action,expected,databricks_observed,snowflake_observed,fabric_observed,verdict,notes
+semantic_reader,query,allow,,,,,
+semantic_admin,administer,allow,,,,,
+sales_analyst,query,deny,,,,,

@@ -1,0 +1,5 @@
+{
+  "rows": 12,
+  "semantic_view": "SAC_TEST_DB.SAC_CONFORMANCE.SAC_METRICS",
+  "table": "SAC_TEST_DB.SAC_CONFORMANCE.SAC_FACT"
+}
